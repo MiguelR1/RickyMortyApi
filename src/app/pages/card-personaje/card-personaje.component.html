@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personajes de Rick y Morty</title>
+  </head>
+  <body>
+
+    <app-nav (onValue)="cargaPorNombre($event)"></app-nav>
+
+    <div class="personajes">
+
+      <div class="box"
+           *ngFor="let personajes of personajeInfo">
+
+        <div class="container-img">
+          <img src="{{personajes.image}}" alt="">
+        </div>
+
+        <div class="info">
+          <h2 [routerLink]="['/info/', personajes.id]">
+            {{ personajes.name }}
+          </h2>
+
+          <span> {{personajes.status}} </span>
+
+          <br>
+
+          <h3>Ultima locacion:</h3>
+          <a href="{{ personajes.location.url }}">
+            {{ personajes.location.name}}
+          </a>
+
+          <br>
+
+          <h3>Primera ves visto:</h3>
+          <a href="{{ personajes.origin.url }}">{{ personajes.origin.name }}</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <p *ngIf="personajeInfo === undefined">No hay resultados</p>
+
+    <footer>
+      <button (click)="previousPage()">Anterior</button>
+      <span>{{currentPage}}</span>
+      <button (click)="nextPage()">Siguiente</button>
+    </footer>
+
+</body>
+</html>

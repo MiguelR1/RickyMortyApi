@@ -1,0 +1,24 @@
+
+<div class="personaje-only" >
+    <button [routerLink]="['/home/']"
+            class="regresar">Regresar</button>
+
+    <div class="box-only">
+      <img src="{{ personaje?.image }}" alt="">
+
+      <div class="info-card">
+        <h3>{{ personaje?.name }}</h3>
+        <span>{{ personaje?.status }}</span>
+
+        <br>
+
+        <h3>Ultima locacion:</h3>
+        <span>{{ personaje?.location?.name }}</span>
+
+        <br>
+
+        <h3>Primera ves visto:</h3>
+        <span>{{ personaje?.origin?.name }}</span>
+      </div>
+    </div>
+</div>
