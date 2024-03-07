@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavComponent } from './rm/pages/nav/nav.component';
+import { FooterComponent } from './rm/pages/footer/footer.component';
+import { ListComponent } from './rm/pages/list/list.component';
+import { RmModule } from './rm/rm.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +14,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RmModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,130 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+  --primary-color: #2c9490;
+  --secondary-color: #f9e101;
+  --terciary-color: #ff8c00;
+  --background-color: #e2e2e2;
+}
+
+*{
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+}
+
+body, html{
+  background: var(--background-color);
+}
+
+body{
+  position: relative;
+  padding-bottom: 14rem;
+  min-height: 100vh;
+}
+
+/*Nav*/
+
+.navbar{
+  background-color: var(--terciary-color);
+}
+
+.nav-item{
+  font-weight: 500;
+  font-size: 17px;
+}
+.nav-item a{
+  color: black !important;
+  transition: all 0.3s;
+}
+
+.nav-item a:hover{
+  color: white !important;
+}
+
+#search{
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  border-width: 2px;
+  font-weight: 00;
+}
+#search:hover{
+  background: var(--primary-color);
+  color: white;
+}
+
+#inputSearch:hover{
+  border-color: var(--primary-color);
+}
+
+#icon{
+  cursor: pointer;
+}
+
+/*List of characters*/
+
+section{
+  margin: 25px;
+  margin-bottom: 80px !important;
+}
+
+.spanCard{
+  font-size: 13px;
+}
+
+/*Footer*/
+footer{
+  background: var(--primary-color);
+  padding-top: 60px;
+  padding-bottom: 60px;
+  color: var(--background-color);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.footeri{
+  transition: all 0.3s;
+}
+
+.footeri:hover{
+  color: var(--terciary-color) !important;
+}
+
+.backBtn{
+  border-color: var(--terciary-color) !important;
+  color: var(--terciary-color) !important;
+}
+
+.backBtn:hover, .backBtn::marker, .backBtn:active{
+  background-color: var(--terciary-color) !important;
+  color: white !important;
+}
+
+.card-title{
+  transition: all 0.3s;
+}
+
+.card-title:hover{
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+#contact{
+  margin: 50px;
+}
+
+i{
+  cursor: pointer;
+  transition: all 0.3s;
+}
+i:hover{
+  transform: scale(1.2);
+}
+.pgitems{
+  color: var(--terciary-color);
+  font-size: 18px;
+}
+
+.pgitems:hover{
+  background: var(--terciary-color);
+  color: white;
+}
