@@ -128,3 +128,99 @@ i:hover{
   background: var(--terciary-color);
   color: white;
 }
+
+@media (max-width:570px){
+  .nav-item{
+    font-size: 15px;
+  }
+  #search{
+    width: 150px;
+  }
+  #icon{
+    width: 40px !important;
+  }
+}
+
+@media (max-width:460px){
+  .nav-item{
+    font-size: 13px;
+  }
+  #search{
+    width: 140px;
+    height: 30px;
+  }
+
+  #icon{
+    width: 40px !important;
+  }
+
+  #inputValue{
+    width: 130px;
+  }
+}
+
+@media (max-width:420px){
+  .character{
+    margin-left: 0px !important;
+  }
+}
+
+@media (max-width:403px){
+
+  #icon{
+    width: 30px !important;
+  }
+
+  .nav-item{
+    font-size: 11px;
+  }
+
+  .form-control{
+    width: 100px;
+    margin: 0px;
+  }
+
+  .form-control::placeholder{
+    font-size: 12px !important;
+  }
+
+  .fs-6{
+    font-size: 12px !important;
+  }
+
+}
+
+@media (max-width:372px){
+  .nav-item{
+    font-size: 9px;
+    margin-left: 15px !important;
+  }
+
+  .nav-link{
+    padding: 0px !important;
+    margin: 5px !important;
+  }
+
+  .form-control{
+    width: 75px;
+    margin: 0px;
+  }
+
+  .form-control::placeholder{
+    font-size: 10px !important;
+  }
+
+  #search{
+    margin: 0px !important;
+    width: 100px !important;
+  }
+
+  .character{
+    margin-left: 0px !important;
+  }
+
+  #inputValue{
+    width: 80px;
+  }
+}
+

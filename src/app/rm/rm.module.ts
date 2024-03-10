@@ -11,6 +11,11 @@ import { HttpClientModule } from "@angular/common/http";
 import { CharacterPageComponent } from './pages/character-page/character-page.component';
 import { RouterModule } from '@angular/router';
 
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
+
 @NgModule({
   declarations: [
     NavComponent,
@@ -23,7 +28,9 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     RmRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ClipboardModule,
+    MatSnackBarModule
   ]
 })
 export class RmModule { }
