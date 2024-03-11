@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -16,12 +16,15 @@ export class ContactPageComponent {
   copiar(value:string){
     if (value === 'numero') {
       this.clipboard.copy(this.numero);
+      this.ms.open('Número de teléfono copiado correctamente', '👍', {duration: 1000})
     }if (value === 'correo') {
       this.clipboard.copy(this.correo);
-      alert('Se ha copiado '+this.correo+' correctamente')
+      this.ms.open('Correo electrónico copiado correctamente', '👍', {duration: 1000})
     }
     return
   }
 
-  constructor( private clipboard:Clipboard){}
+  constructor(
+    private clipboard:Clipboard,
+    private ms:MatSnackBar  ){}
 }
