@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LocationsComponent } from './pages/locations/locations.component';
+import { LocationPageComponent } from './pages/location-page/location-page.component';
 
 
 
@@ -22,7 +24,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FooterComponent,
     ListComponent,
     ContactPageComponent,
-    CharacterPageComponent
+    CharacterPageComponent,
+    LocationsComponent,
+    LocationPageComponent
   ],
   imports: [
     CommonModule,

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Observable, Subject, catchError, of, tap } from 'rxjs';
 import { enviroments } from '../enviroments/enviroments';
+import { Location, ResultLocation } from '../interfaces/location.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ import { enviroments } from '../enviroments/enviroments';
 export class RmService {
 
   characterUrl:string = enviroments.baseUrl+`character/`;
+
+  locationUrl:string = enviroments.baseUrl+`location/`;
 
   url:string = enviroments.baseUrl;
 
@@ -47,9 +50,36 @@ export class RmService {
     return this.http.get<Result>(this.characterUrl + id)
   }
 
+  public getResident(url:string):Observable<any>{
+    return this.http.get<any>(url)
+  }
+
   public getAliveDead(status:string):Observable<Character>{
     return this.http.get<Character>(this.characterUrl + `?status=`+status)
   }
+
+  public getGender(gender:string):Observable<Character>{
+    return this.http.get<Character>(this.characterUrl + `?gender=`+gender)
+  }
+
+  public getCharacterwithGS():Observable<Character>{
+    return this.http.get<Character>(this.characterUrl+`?gender=`+this.gender+`&status=`+this.status)
+  }
+
+  public getLocations(page:number):Observable<Location>{
+    return this.http.get<Location>(this.locationUrl+`?page=`+page)
+  }
+
+  public getSLocation(id:number):Observable<ResultLocation>{
+    return this.http.get<ResultLocation>(this.locationUrl+id)
+  }
+
+  public goLoc(ubi:string):Observable<Location>{
+    return this.http.get<Location>(this.locationUrl+`?name=`+ubi)
+  }
+
+  public status:string = '';
+  public gender:string = '';
 
   constructor( private http:HttpClient ) { }
 }

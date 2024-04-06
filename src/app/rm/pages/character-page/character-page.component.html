@@ -1,6 +1,6 @@
-<section>
+<div class="chpage">
   <div class="row d-flex justify-content-center">
-  <div  class="card mb-3 col-2 p-0 m-3" style="width: 16rem;">
+  <div  class="card mb-3 col-2 p-0 m-3 csCard" style="width: 16rem;">
 
     <img [src]="[character?.image]" class="card-img-top m-0" alt="...">
 
@@ -16,7 +16,10 @@
       </span>
 
       <span class="spanCard fw-semibold">Last known location:</span>
-      <p class="card-text fs-6 mb-2">{{character?.location?.name}}</p>
+      <p class="card-text locardText fs-6 mb-2"
+      style="cursor: pointer;"
+      (click)="goLoc(character!.location!.name)"
+      >{{character?.location?.name}}</p>
 
       <span class="spanCard fw-semibold">First seen in:</span>
       <p class="card-text fs-6 mb-2">{{character?.origin?.name}}</p>
@@ -28,4 +31,4 @@
   </div>
 </div>
 <button type="button" class="btn btn-outline-primary backBtn" (click)="back()">Back</button>
-</section>
+</div>

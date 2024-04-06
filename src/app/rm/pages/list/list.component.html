@@ -1,18 +1,61 @@
 
-<div class="d-flex align-items-center m-4">
-    <span class="me-1">Status:</span>
-      <button type="button" class="btn btn-light m-1" (click)="getStatus('alive')" [ngClass]="{'disabled':statusDead}">Alive</button>
-      <button type="button" class="btn btn-light m-1" (click)="getStatus('dead')" [ngClass]="{'disabled':statusAlive}">Dead</button>
-</div>
-
 <section>
+  <div class="d-flex justify-content-center align-items-center">
+
+  <div class="accordion m-4 w-50" id="accordionExample">
+    <div class="accordion-item ">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Filtrar personajes
+        </button>
+      </h2>
+
+      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <form>
+            <div class="d-flex justify-content-center my-4 form">
+
+        <div class="d-flex align-items-center mt-3">
+            <span class="me-2 slabel">Status:</span>
+            <select class="form-select me-3 statusInput" #status (change)="getStatus(status.value)">
+              <option value="" selected disabled>...</option>
+              <option value="alive">Alive</option>
+              <option value="dead">Dead</option>
+              <option value="unknown">Unknown</option>
+            </select>
+          </div>
+
+        <div class="d-flex align-items-center">
+          <span class="me-2 slabel">Gender:</span>
+          <select class="form-select me-3" #gender (change)="getGender(gender.value)">
+            <option value="" selected disabled>...</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="genderless">Genderless</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </div>
+
+        <div>
+          <button class="btn btn-outline-primary formB" (click)="getCharacters(1)" type="reset">Reset</button>
+        </div>
+
+        </div>
+
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
   <div class="row d-flex justify-content-center">
 
     <h3 *ngIf="existPersonaje===false" class="text-center mt-4">
       No hay personajes para mostrar...
     </h3>
 
-    <div  class="card mb-3 col-2 p-0 m-3 mb-1" style="width: 16rem;" *ngFor="let characters of Character">
+    <div class="card col-2 p-0 m-3 mb-1 chCards" style="width: 16rem;" *ngFor="let characters of Character">
 
       <img [src]="[characters.image]" class="card-img-top m-0" alt="...">
 
@@ -26,12 +69,19 @@
           {{characters.status}} - {{characters.species}}
         </span>
 
-        <span class="spanCard">Last known location:</span>
-        <p class="card-text fs-6 mb-2">{{characters.location.name}}</p>
+        <div class="d-flex flex-column justify-content-center my-auto">
 
-        <span class="spanCard">First seen in:</span>
-        <p class="card-text fs-6 mb-1">{{characters.origin.name}}</p>
+          <span class="fw-bolder spanCard">Last known location:</span>
+          <p
+          class="card-text locardText fs-6 mb-2"
+          style="cursor: pointer;"
+          (click)="goLoc(characters.location.name)"
+          >{{characters.location.name | slice:0:20}}...</p>
 
+          <span class="fw-bolder spanCard">First seen in:</span>
+          <p class="card-text fs-6 mb-1">{{characters.origin.name| slice:0:20}}...</p>
+
+        </div>
 
       </div>
     </div>

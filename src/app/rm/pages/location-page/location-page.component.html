@@ -1,0 +1,29 @@
+<div class="locationP">
+
+    <button class="btn srbtn " style="font-size: 16px; padding: 5px 15px;" routerLink="/rickymorty/locations">Back</button>
+
+    <h2 class="display-5 text-center locname">{{location?.name}}</h2>
+
+
+  <div class="d-flex flex-column mt-2 locationText">
+    <span class="ms-4 mb-2" style="font-size: 20px;"><b style="color: #2c9490;">Type:</b> {{location?.type}}</span>
+    <span class="ms-4 mb-2" style="font-size: 20px;"><b style="color: #2c9490;">Dimension:</b> {{location?.dimension}}</span>
+    <span class="ms-4" style="font-size: 20px;"><b style="color: #2c9490;">Created:</b> {{location?.created}}</span>
+  </div>
+
+  <h3 class="text-center mt-3 display-6 residentsText" style="color: #f08400; font-weight: 550;">RESIDENTS</h3>
+
+  <div class="text-center mt-5 display-6" *ngIf="resident.length == 0">
+    There are NO residents in this location...
+  </div>
+
+  <div class="row m-5 d-flex justify-content-center residentsBox">
+
+      <div class="col-lg-2 col-md-4 col-sm-4 m-5 mt-2 d-flex flex-column align-items-center" *ngFor="let item of resident">
+        <img src="{{item.image}}" style="width: 13rem; border-radius: 50%;" class="mb-2 rimage" [routerLink]="['/rickymorty/character/' + item.id]">
+        <h3 [routerLink]="['/rickymorty/character/' + item.id]" style="cursor: pointer;" class="resident text-center">{{item.name}}</h3>
+        <span>{{item.status}} - {{item.gender}}</span>
+      </div>
+    </div>
+
+</div>

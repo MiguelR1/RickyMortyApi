@@ -12,6 +12,16 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit{
 
+  public claseAgregada:boolean = false;
+
+  expandAct(){
+    if (this.claseAgregada == false) {
+      this.claseAgregada = true;
+    }else{
+      this.claseAgregada = false;
+    }
+  }
+
   private debouncer = new Subject<string>;
 
   keyPress(word:string){

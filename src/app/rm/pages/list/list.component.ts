@@ -1,6 +1,7 @@
-import { Character, Result } from './../../../interfaces/character.interface';
+import { Character } from './../../../interfaces/character.interface';
 import { Component, OnInit } from '@angular/core';
 import { RmService } from '../../rm.service';
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -49,10 +50,30 @@ export class ListComponent implements OnInit{
     this.rmS.pageNumber = value;
   }
 
+  get status(){
+    return this.rmS.status;
+  }
+
+  set status(status){
+    this.rmS.status = status;
+  }
+
+  get gender(){
+    return this.rmS.gender;
+  }
+
+  set gender(gender){
+    this.rmS.gender = gender;
+  }
+
+
+
   getCharacters(page:number) {
     this.rmS.getCharacters(page).subscribe(
       (response:Character) => {
         this.Character = response.results;
+        console.log(this.Character)
+
       },
       (error) => {
         console.error(error);
@@ -61,28 +82,62 @@ export class ListComponent implements OnInit{
   }
 
   getStatus(status:string){
-    this.rmS.getAliveDead(status)
-      .subscribe( (data) => this.Character = data.results
-      )
+    this.status = status;
 
-      if(status == 'alive'){
-        this.statusAlive == true;
-        this.statusDead == false;
 
-      }
-      if(status == 'dead'){
-        this.statusDead == true;
-        this.statusAlive == false;
-      }
+    if (this.status.length && this.gender.length > 0) {
+      this.getCharacterwithGS();
+    } else{
+      this.rmS.getAliveDead(status)
+      .subscribe( (data) => this.Character = data.results);
+    }
+
   }
 
-  public statusDead: boolean = false;
-  public statusAlive: boolean = false;
+  getGender(gender:string){
+    this.gender = gender;
+
+
+    if (this.status.length && this.gender.length > 0) {
+
+      this.getCharacterwithGS();
+    } else{
+
+      this.rmS.getGender(gender)
+      .subscribe( data => this.Character = data.results );
+    }
+
+  }
+
+  getCharacterwithGS(){
+
+    if (this.status.length && this.gender.length > 0) {
+      this.rmS.getCharacterwithGS()
+        .subscribe(data => this.Character = data.results
+        )
+    }
+    return
+  }
+
+  Locid: number = 0;
+
+
+  goLoc(ubi:string){
+    this.rmS.goLoc(ubi)
+      .subscribe( data =>
+          {
+            this.Locid = data.results[0].id
+            console.log(this.Locid)
+            this.route.navigateByUrl('/rickymorty/location/'+this.Locid)
+          }
+      )
+  }
 
   ngOnInit() {
     this.getCharacters(this.pageNumber);
   }
 
-  constructor( private rmS:RmService ){}
+  constructor( private rmS:RmService,
+               private route:Router){}
 
 }

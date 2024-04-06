@@ -1,0 +1,27 @@
+<div class="locations">
+
+<div class="row d-flex align-items-center justify-content-center">
+<div class="card col-lg-3 col-md-4 col-sm-9 col-11 m-4" *ngFor="let item of locations">
+
+    <h3 class="card-title mt-4 text-center lName">{{item.name}}</h3>
+
+    <div class="d-flex flex-column ms-4 mb-3">
+      <span class="me-2 mb-1"><b>TYPE:</b> {{item.type}}</span>
+      <span><b>DIMENSION:</b> {{item.dimension}}</span>
+    </div>
+
+    <div class="mx-auto">
+      <button class="btn mb-4 srbtn" [routerLink]="['/rickymorty/location/'+ item.id]">SHOW RESIDENTS</button>
+    </div>
+  </div>
+</div>
+
+  <ul class="pagination d-flex justify-content-center">
+    <li class="page-item"><a class="page-link pgitems" style="cursor: pointer; user-select: none;" (click)="changePage(-1)">Previous</a></li>
+    <li class="page-item"><a class="page-link pgitems" style="cursor: default;">{{locPNumber}}</a></li>
+    <li class="page-item"><a class="page-link pgitems" style="cursor: pointer; user-select: none;" (click)="changePage(+1)">Next</a></li>
+  </ul>
+
+</div>
+
+

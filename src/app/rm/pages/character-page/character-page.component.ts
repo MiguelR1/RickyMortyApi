@@ -30,11 +30,25 @@ export class CharacterPageComponent implements OnInit {
 
   }
 
+  Locid: number = 0;
+
+
+  goLoc(ubi:string){
+    this.rmS.goLoc(ubi)
+      .subscribe( data =>
+          {
+            this.Locid = data.results[0].id
+            console.log(this.Locid)
+            this.route.navigateByUrl('/rickymorty/location/'+this.Locid)
+          }
+      )
+  }
+
 constructor( private rmS:RmService,
               private ar:ActivatedRoute,
               private route:Router){}
 
   back(){
-    this.route.navigateByUrl('');
+    window.history.back()
   }
 }
